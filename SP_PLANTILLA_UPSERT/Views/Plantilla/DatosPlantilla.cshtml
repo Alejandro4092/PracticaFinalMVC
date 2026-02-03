@@ -1,0 +1,67 @@
+﻿@model ResumenPlantilla
+@{
+    List<string> funcList = ViewData["FUNCION"] as List<string>;
+}
+<h1>Lambda Linq Empleados</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label>Funcion:</label>
+        <select name="funcion" class="form-control">
+            @foreach (string func in funcList)
+            {
+                <option>@func</option>
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-warning mt-2">
+        Buscar empleados
+    </button>
+</form>
+
+@if (Model != null && Model.Personas > 0)
+{
+    <hr />
+    <ul class="list-group mt-3">
+        <li class="list-group-item list-group-item-secondary">
+            Personas: @Model.Personas
+        </li>
+        <li class="list-group-item list-group-item-warning">
+            Máximo salario: @Model.MaximoSalarial €
+        </li>
+        <li class="list-group-item list-group-item-dark">
+            Media salarial: @Model.MediaSalarial
+        </li>
+    </ul>
+    <table class="table table-active mt-3">
+        <thead>
+            <tr>
+                <th>SalaCod</th>
+                <th>empleadoNo</th>
+                <th>Apellido</th>
+                <th>Funcion</th>
+                <th>Turno</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Plantilla plantilla in Model.Plantilla)
+            {
+                <tr>
+                    <td>@plantilla.SalaCod</td>
+                    <td>@plantilla.empleadoNo</td>
+                    <td>@plantilla.Apellido</td>
+                    <td>@plantilla.Funcion</td>
+                    <td>@plantilla.Turno</td>
+                    <td>@plantilla.Salario</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else if (Model != null && Model.Personas == 0)
+{
+    <div class="alert alert-warning mt-3">
+        No se encontraron empleados con ese oficio.
+    </div>
+}

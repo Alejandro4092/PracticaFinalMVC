@@ -1,0 +1,46 @@
+@model SP_PLANTILLA_UPSERT.Models.Plantilla
+
+<h1>Crear Nueva Plantilla</h1>
+
+<form method="post" action="/Plantilla/Create">
+    <div class="form-group">
+        <label for="IdHospital">Código Hospital</label>
+        <input id="IdHospital" name="IdHospital" class="form-control" type="number" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="SalaCod">Código Sala</label>
+        <input id="SalaCod" name="SalaCod" class="form-control" type="number" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="empleadoNo">Número Empleado</label>
+        <input id="empleadoNo" name="empleadoNo" class="form-control" type="number" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="Apellido">Apellido</label>
+        <input id="Apellido" name="Apellido" class="form-control" type="text" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="Funcion">Función</label>
+        <input id="Funcion" name="Funcion" class="form-control" type="text" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="Turno">Turno</label>
+        <input id="Turno" name="Turno" class="form-control" type="text" required />
+    </div>
+    
+    <div class="form-group">
+        <label for="Salario">Salario</label>
+        <input id="Salario" name="Salario" class="form-control" type="number" required />
+    </div>
+    
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="/Plantilla/Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+    

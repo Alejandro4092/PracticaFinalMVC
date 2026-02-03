@@ -1,0 +1,39 @@
+
+
+<h1 style="color:blue">Detalles del Alumno</h1>
+
+<div style="text-align:center; margin-bottom:20px;">
+    <img src="@Model.Imagen" alt="@Model.Nombre" style="max-width: 200px; border-radius: 10px;" />
+</div>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <strong>Nombre y Apellidos:</strong> @Model.Nombre @Model.Apellidos
+    </li>
+    <li class="list-group-item">
+        <strong>Email:</strong> @Model.Email
+    </li>
+    <li class="list-group-item">
+        <strong>Curso:</strong> @Model.NombreCurso
+    </li>
+    <li class="list-group-item">
+        <strong>Actividad:</strong> @Model.NombreActividad
+    </li>
+    <li class="list-group-item">
+        <strong>Fecha Evento:</strong> @Model.FechaEvento
+    </li>
+    <li class="list-group-item">
+        <strong>¿Quiere ser capitán?</strong> 
+        @if (Model.QuiereSerCapitan)
+        {
+            <span style="color:green; font-weight:bold;">si</span>
+        }
+        else
+        {
+            <span style="color:gray;">No</span>
+        }
+    </li>
+</ul>
+
+<br />
+<a asp-controller="Alumnos" asp-action="Index" class="btn btn-secondary">Volver al listado</a>

@@ -1,0 +1,29 @@
+﻿<h1>Plantilla</h1>
+<a asp-controller="Plantilla" asp-action="Create" class="btn btn-success mb-3">Crear Nueva Plantilla</a>
+<table class="table-bordered">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th></th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Plantilla plantilla in Model)
+        {
+            <tr>
+                <td>@plantilla.Apellido</td>
+
+               <td><a asp-controller="Plantilla" asp-action="Details" asp-route-id="@plantilla.IdHospital" class="btn btn-info">Details</a>
+                    <a asp-controller="P"
+                       asp-action="Delete"
+                       class="btn btn-danger"
+                       asp-route-id="@plantilla.IdHospital">
+                        Delete
+                    </a>
+               
+               </td> 
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,33 @@
+﻿
+
+<h1 style="color:blue">Listado de Alumnos</h1>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Email</th>
+            <th>Actividad</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AlumnoDetalle alumno in Model)
+        {
+            <tr>
+                <td>
+                    <img src="@alumno.Imagen" alt="@alumno.Nombre" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;" />
+                </td>
+                <td>@alumno.Nombre</td>
+                <td>@alumno.Apellidos</td>
+                <td>@alumno.Email</td>
+                <td>@alumno.NombreActividad</td>
+                <td>
+                    <a asp-controller="Alumnos" asp-action="Details" asp-route-id="@alumno.IdUsuario" class="btn btn-info">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

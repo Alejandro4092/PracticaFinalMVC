@@ -1,0 +1,32 @@
+﻿
+
+<h1>Buscador Plantilla</h1>
+<form method="post">
+    <label>Oficio:</label>
+    <input type="text" name="funcion" class="form-control" />
+    <label>Salario:</label>
+    <input type="text" name="salario" class="form-control" />
+    <button class="btn btn-info">Buscar empleados</button>
+</form>
+<h3 style="color:red">@ViewData["MENSAJE"]</h3>
+@if (Model != null)
+{
+    <table class="table-bordered">
+        <thead>
+        <th>Apellido</th>
+        <th>Funcion</th>
+        <th>Salario</th>
+        </thead>
+        <tbody>
+            @foreach (Plantilla empleado in Model)
+            {
+                <tr>
+                    <td>@empleado.Apellido</td>
+                    <td>@empleado.Funcion</td>
+                    <td>@empleado.Salario</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
