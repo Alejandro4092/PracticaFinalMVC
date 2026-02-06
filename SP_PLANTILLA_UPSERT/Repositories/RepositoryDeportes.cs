@@ -12,7 +12,7 @@ namespace SP_PLANTILLA_UPSERT.Repositories
 
         public RepositoryDeportes()
         {
-            string connectionString = @"Data Source=LOCALHOST\DEVELOPER;Initial Catalog=COSASDEMARTES;Persist Security Info=True;User ID=SA;Password=Admin123;Encrypt=True;Trust Server Certificate=True";
+            string connectionString = @"Data Source=LOCALHOST\DEVELOPER;Initial Catalog=COSASDEMARTES;Persist Security Info=True;User ID=SA;;Encrypt=True;Trust Server Certificate=True";
             this.cn = new SqlConnection(connectionString);
             this.com = new SqlCommand();
             this.com.Connection = this.cn;
