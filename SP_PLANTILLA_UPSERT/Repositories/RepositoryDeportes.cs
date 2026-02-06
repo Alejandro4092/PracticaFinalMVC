@@ -1,11 +1,36 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Data.SqlClient;
 using SP_PLANTILLA_UPSERT.Models;
 using System.Data;
 
 namespace SP_PLANTILLA_UPSERT.Repositories
 {
+    
     public class RepositoryDeportes
     {
+        #region vista
+//        CREATE VIEW dbo.V_ALUMNOS_DETALLE
+//    AS
+//SELECT DISTINCT
+//    u.IDUSUARIO,
+//    u.NOMBRE,
+//    u.APELLIDOS,
+//    u.EMAIL,
+//    u.IMAGEN,
+//    c.NOMBRE as NombreCurso,
+//    a.nombre as NombreActividad,
+//    e.fecha_evento,
+//    i.quiere_ser_capitan,
+//    i.fecha_inscripcion
+//FROM USUARIOSTAJAMAR u
+//INNER JOIN CURSOSTAJAMAR c ON u.IDCURSO = c.IDCURSO
+//INNER JOIN INSCRIPCIONES i ON u.IDUSUARIO = i.id_usuario
+//INNER JOIN EVENTO_ACTIVIDADES ea ON i.IdEventoActividad = ea.IdEventoActividad
+//INNER JOIN ACTIVIDADES a ON ea.IdActividad = a.id_actividad
+//INNER JOIN EVENTOS e ON ea.IdEvento = e.id_evento;
+//        GO
+        #endregion
+
         private SqlConnection cn;
         private SqlCommand com;
         private DataTable tablaAlumnos;
@@ -17,6 +42,11 @@ namespace SP_PLANTILLA_UPSERT.Repositories
             this.com = new SqlCommand();
             this.com.Connection = this.cn;
 
+            // NUEVO: Consulta la vista en lugar de hacer los JOINs manualmente
+            string sql = "SELECT * FROM V_ALUMNOS_DETALLE";
+
+            // ANTIGUO: Consulta con JOINs que generaba duplicados
+            /*
             string sql = @"SELECT 
                             u.IDUSUARIO,
                             u.NOMBRE,
@@ -34,6 +64,7 @@ namespace SP_PLANTILLA_UPSERT.Repositories
                           INNER JOIN EVENTO_ACTIVIDADES ea ON i.IdEventoActividad = ea.IdEventoActividad
                           INNER JOIN ACTIVIDADES a ON ea.IdActividad = a.id_actividad
                           INNER JOIN EVENTOS e ON ea.IdEvento = e.id_evento";
+            */
 
             SqlDataAdapter ad = new SqlDataAdapter(sql, connectionString);
             this.tablaAlumnos = new DataTable();
